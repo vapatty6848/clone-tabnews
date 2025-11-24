@@ -14,6 +14,9 @@ const createJestConfig = nextJest({
 
 const jestConfig = createJestConfig({
   moduleDirectories: ["node_modules", "<rootDir>" ],
+  testTimeout: 1000 * 60 *  1,
+  maxWorkers: 4,
+  cache: true,
 });
 
 
