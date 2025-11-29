@@ -6,7 +6,6 @@
   "engines": {
     "node": ">=22"
   },
-
   "scripts": {
     "dev": "npm run services:up && npm run wait-for-postgres && npm run migrations:up && next dev",
     "services:up": "docker compose -f infra/compose.yaml up -d",
