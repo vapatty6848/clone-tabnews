@@ -1,13 +1,11 @@
-
 import database from "infra/database.js";
 /* database.query("SELECT 1+1;"); */
 import orchestrator from "test/orchestrator.js";
 
-beforeAll(async() => {
-   await orchestrator.waitForAllServices();
-   await database.query("drop schema public cascade; create schema public")
-})
-
+beforeAll(async () => {
+  await orchestrator.waitForAllServices();
+  await database.query("drop schema public cascade; create schema public");
+});
 
 /* beforeAll(cleanDatabase);
 
@@ -20,7 +18,7 @@ test("GET to api/v1/migrations should return 200 ", async () => {
   expect(response.status).toBe(200);
 
   const responseBody = await response.json();
-  console.log("arrayGet", responseBody)
+  console.log("arrayGet", responseBody);
 
   expect(Array.isArray(responseBody)).toBe(true);
 
