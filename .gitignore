@@ -1,6 +1,8 @@
 
 .next
 .vscode
-node_modules
+
+
 
 .codegpt
+node_modules
