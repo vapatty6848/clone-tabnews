@@ -19,5 +19,5 @@ const jestConfig = createJestConfig({
 
 module.exports = jestConfig;
 
-/* o jest só ira carregar as variaveis de ambiente apos configurar o dropIndex, mas 
+/* o jest só ira carregar as variaveis de ambiente apos configurar o dropIndex, mas
 neste caso nossa variavel esta em .env.develop, então precisamos indicar o caminho */

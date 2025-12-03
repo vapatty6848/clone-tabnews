@@ -1,3 +1,5 @@
+
+/* eslint-disable no-unused-vars */
 import database from "infra/database.js";
 
 async function status(request, response) {
