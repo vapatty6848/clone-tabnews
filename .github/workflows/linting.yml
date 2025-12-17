@@ -1,4 +1,5 @@
 name: Linting
+
 on: pull_request
 
 jobs:
@@ -10,7 +11,36 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
+          node-version: "lts/hydrogen"
+
+      - run: npm ci
+
+      - run: npm run lint:prettier:check
+  eslint:
+    name: Eslint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
           node-version: "22"
 
       - run: npm ci
+
       - run: npm run lint:prettier:check
+  commitlint:
+    name: commitlint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - run: npm ci
+
+      - run: npx commitlint --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }} --verbose
