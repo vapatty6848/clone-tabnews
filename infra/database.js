@@ -17,8 +17,11 @@ async function query(queryObject) {
     return result;
   } catch (error) {
     console.error(error);
+    throw error;
   } finally {
-    await client.end();
+    if (client) {
+      await client.end();
+    }
   }
 }
 
@@ -47,7 +50,7 @@ function getSSLValues() {
       ca: process.env.POSTGRES_CA,
     };
   }
-  /*  testando que o jest esta em ambient de test e next em desenvolvimento 
+  /*  testando que o jest esta em ambient de test e next em desenvolvimento
  return process.env.NODE_ENV ==="production" ? true : false */
 
   console.log("NODE_ENV: " + process.env.NODE_ENV);
